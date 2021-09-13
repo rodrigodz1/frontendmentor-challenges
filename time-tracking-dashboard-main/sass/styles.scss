@@ -1,0 +1,148 @@
+$primary-color: #0d1323;
+$cards-color: #1d204b;
+$links-color: #7478b5;
+$span-info-color: #b8afff;
+$board-span-color: #8b8ec3;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: $primary-color;
+  color: white;
+  font-family: "Rubik", sans-serif;
+}
+#app {
+  margin: 10%;
+  display: flex;
+}
+.profile {
+  position: relative;
+}
+.profile1 {
+  position: absolute;
+  z-index: 2;
+  background: #5746ea;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  img {
+    border-radius: 100%;
+    border: 3px solid white;
+  }
+  div {
+    padding-right: 40px;
+    div {
+      font-size: 40px;
+      padding-bottom: 60px;
+    }
+    span {
+      color: $span-info-color;
+    }
+  }
+}
+.profile2 {
+  position: absolute;
+  width: 222px;
+  z-index: 1;
+  top: 310px;
+  background: $cards-color;
+  padding: 40px 20px 20px 20px;
+
+  a {
+    text-decoration: none;
+    color: $links-color;
+    &:focus {
+      color: white;
+    }
+  }
+
+  .nested-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    a {
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  border-radius: 0 0 15px 15px;
+}
+
+.boards-wrapper {
+  padding-left: 260px;
+  width: 100%;
+  height: 453px;
+  display: flex;
+}
+
+.boards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 40px;
+  row-gap: 25px;
+}
+
+.individual-board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+}
+
+.top-of-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-radius: 20px 20px 0 0;
+  img {
+    padding-right: 15px;
+  }
+}
+
+.bottom-of-board {
+  background: $cards-color;
+  border-radius: 20px 20px 20px 20px;
+  position: absolute;
+  top: 35px;
+  width: 180px;
+  height: 142px;
+  padding: 20px;
+  span {
+    color: $board-span-color;
+  }
+  &:hover {
+    background-color: #34397b;
+    cursor: pointer;
+  }
+}
+
+.board-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-size: 20px;
+  span {
+    color: white;
+  }
+  img {
+    &:hover {
+      color: $cards-color;
+    }
+  }
+}
+
+.board-time-spent {
+  font-size: 50px;
+  padding: 10px 5px;
+}
+
+[v-cloak] {
+  display: none;
+}
