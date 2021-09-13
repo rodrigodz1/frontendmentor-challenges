@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="data.json"></script>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="profile">
+        <div class="profile1">
+          <img src="images/image-jeremy.png" width="75" alt="" class="src" />
+          <div>
+            <span>Report for</span>
+            <div>
+              Jeremy <br />
+              Robson
+            </div>
+          </div>
+        </div>
+
+        <div class="profile2">
+          <div class="nested-links">
+            <a @click="daily" href="#">Daily</a>
+            <a @click="weekly" href="#">Weekly</a>
+            <a @click="monthly" href="#">Monthly</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="boards-wrapper">
+        <div class="boards">
+          <each-board
+            v-for="(section, i) in profileData"
+            :activity="section"
+            :tf="currentTimeframe"
+            :key="i"
+          >
+          </each-board>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const App = {
+        data() {
+          return {
+            profileData: [],
+            currentTimeframe: "daily",
+          };
+        },
+        created() {
+          fetch("./data.json")
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => Object.assign(this.profileData, data));
+        },
+        methods: {
+          daily() {
+            this.currentTimeframe = "daily";
+          },
+          weekly() {
+            this.currentTimeframe = "weekly";
+          },
+          monthly() {
+            this.currentTimeframe = "monthly";
+          },
+        },
+      };
+      const test = Vue.createApp(App);
+
+      test.component("each-board", {
+        props: ["activity", "tf"],
+        template: `
+          <div class="individual-board">
+            <div :style="{ background: activity.background }" class="top-of-board">
+              <img :src="activity.icon" height="60" alt="" />
+            </div>
+
+            <div class="bottom-of-board">
+              <div class="board-nav">
+                <span>{{ activity.title }}</span>
+                <img src="images/icon-ellipsis.svg" alt="" />
+              </div>
+
+              <div class="board-time-spent">
+                <div v-if="tf === 'daily'"> {{ activity.timeframes.daily.current }}hrs </div>
+                <div v-if="tf === 'weekly'"> {{ activity.timeframes.weekly.current }}hrs </div>
+                <div v-if="tf === 'monthly'"> {{ activity.timeframes.monthly.current }}hrs </div>
+              </div>
+
+              <span v-if="tf === 'daily'"
+                >Last Day - {{ activity.timeframes.daily.previous
+                }}hrs
+              </span>
+
+              <span v-if="tf === 'weekly'"
+                >Last Week - {{ activity.timeframes.weekly.previous
+                }}hrs
+              </span>
+
+              <span v-if="tf === 'monthly'"
+                >Last Month - {{ activity.timeframes.monthly.previous
+                }}hrs
+              </span>
+              
+            </div>
+          </div>
+        `,
+      });
+
+      const vm = test.mount("#app");
+    </script>
+  </body>
+</html>
