@@ -1,0 +1,148 @@
+$strong-cyan: hsl(172, 67%, 45%);
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan1: hsl(186, 14%, 43%);
+$dark-grayish-cyan2: hsl(184, 14%, 56%);
+$light-grayish-cyan1: hsl(185, 41%, 84%);
+$light-grayish-cyan2: hsl(189, 41%, 97%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $light-grayish-cyan1;
+  font-family: "Space Mono", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    margin: 100px 0 50px 0;
+    letter-spacing: 8px;
+    font-weight: bold;
+    font-size: 25px;
+    color: $dark-grayish-cyan1;
+  }
+  .main-container {
+    display: flex;
+    column-gap: 20px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    div {
+      display: flex;
+      flex-direction: column;
+      border-radius: 15px;
+      padding: 15px;
+      background-color: white;
+      color: $dark-grayish-cyan1;
+      .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 10px 10px 10px -15px;
+        width: 110%;
+        span {
+          grid-column-end: span 3;
+          padding: 0 0 5px 5px;
+        }
+        button {
+          cursor: pointer;
+          margin: 5px;
+          padding: 5px;
+          border-radius: 5px;
+          border: none;
+          color: white;
+          background-color: $very-dark-cyan;
+          font-size: 20px;
+          font-weight: 700;
+
+          &:focus {
+            background-color: $strong-cyan;
+            color: $very-dark-cyan;
+          }
+        }
+        .custom-button {
+          background-color: $light-grayish-cyan2;
+          color: $dark-grayish-cyan1;
+        }
+      }
+      span {
+        background-color: white;
+        margin: 0;
+        padding: 2px;
+        font-size: 15px;
+        letter-spacing: 0px;
+      }
+    }
+    aside {
+      background-color: $very-dark-cyan;
+      color: white;
+      border-radius: 15px;
+      padding: 15px;
+      .tip-amount {
+        display: flex;
+        background-color: inherit;
+        div {
+          flex-direction: row;
+          justify-content: space-between;
+          column-gap: 70px;
+          background-color: inherit;
+        }
+        span {
+          background-color: inherit;
+          color: white;
+          &::after {
+            content: "/ person";
+            color: $dark-grayish-cyan2;
+          }
+        }
+        .values {
+          color: $strong-cyan;
+          font-size: 35px;
+          font-weight: 700;
+          background-color: inherit;
+        }
+        button {
+          margin-top: 90px;
+          background-color: $strong-cyan;
+          padding: 10px 0;
+          color: $very-dark-cyan;
+          border: none;
+          font-weight: 700;
+          border-radius: 5px;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+    input {
+      background-color: $light-grayish-cyan2;
+      color: $very-dark-cyan;
+      border: none;
+      border-radius: 5px;
+      text-align: right;
+      padding: 5px;
+      margin: 0;
+      &::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+      font-weight: 700;
+      outline: none;
+      font-size: 20px;
+    }
+    .bill-value {
+      background-image: url(../images/icon-dollar.svg);
+      background-repeat: no-repeat;
+      background-position: calc(8px) center;
+      background-size: 8px 14px;
+    }
+    .person-quantity {
+      background-image: url(../images/icon-person.svg);
+      background-repeat: no-repeat;
+      background-position: calc(8px) center;
+      background-size: 10px 14px;
+    }
+  }
+}

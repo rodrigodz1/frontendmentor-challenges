@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #c5e4e7;
+  font-family: "Space Mono", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main span {
+  margin: 100px 0 50px 0;
+  letter-spacing: 8px;
+  font-weight: bold;
+  font-size: 25px;
+  color: #5e7a7d;
+}
+main .main-container {
+  display: flex;
+  column-gap: 20px;
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+}
+main .main-container div {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: white;
+  color: #5e7a7d;
+}
+main .main-container div .buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px 10px 10px -15px;
+  width: 110%;
+}
+main .main-container div .buttons span {
+  grid-column-end: span 3;
+  padding: 0 0 5px 5px;
+}
+main .main-container div .buttons button {
+  cursor: pointer;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: #00494d;
+  font-size: 20px;
+  font-weight: 700;
+}
+main .main-container div .buttons button:focus {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+main .main-container div .buttons .custom-button {
+  background-color: #f4fafa;
+  color: #5e7a7d;
+}
+main .main-container div span {
+  background-color: white;
+  margin: 0;
+  padding: 2px;
+  font-size: 15px;
+  letter-spacing: 0px;
+}
+main .main-container aside {
+  background-color: #00494d;
+  color: white;
+  border-radius: 15px;
+  padding: 15px;
+}
+main .main-container aside .tip-amount {
+  display: flex;
+  background-color: inherit;
+}
+main .main-container aside .tip-amount div {
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 70px;
+  background-color: inherit;
+}
+main .main-container aside .tip-amount span {
+  background-color: inherit;
+  color: white;
+}
+main .main-container aside .tip-amount span::after {
+  content: "/ person";
+  color: #7f9c9f;
+}
+main .main-container aside .tip-amount .values {
+  color: #26c0ab;
+  font-size: 35px;
+  font-weight: 700;
+  background-color: inherit;
+}
+main .main-container aside .tip-amount button {
+  margin-top: 90px;
+  background-color: #26c0ab;
+  padding: 10px 0;
+  color: #00494d;
+  border: none;
+  font-weight: 700;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+main .main-container input {
+  background-color: #f4fafa;
+  color: #00494d;
+  border: none;
+  border-radius: 5px;
+  text-align: right;
+  padding: 5px;
+  margin: 0;
+  font-weight: 700;
+  outline: none;
+  font-size: 20px;
+}
+main .main-container input::-webkit-inner-spin-button,
+main .main-container input ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+main .main-container .bill-value {
+  background-image: url(../images/icon-dollar.svg);
+  background-repeat: no-repeat;
+  background-position: calc(8px) center;
+  background-size: 8px 14px;
+}
+main .main-container .person-quantity {
+  background-image: url(../images/icon-person.svg);
+  background-repeat: no-repeat;
+  background-position: calc(8px) center;
+  background-size: 10px 14px;
+}
+
+/*# sourceMappingURL=styles.css.map */

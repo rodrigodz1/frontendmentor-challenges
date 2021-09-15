@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | Tip calculator app</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main id="app">
+      <span>SPLI<br />TTER</span>
+      <div class="main-container">
+        <div>
+          <span>Bill</span>
+          <input class="bill-value" type="number" v-model="bill" />
+
+          <div class="buttons">
+            <span>Select Tip %</span>
+            <button @click="updatePercentage(0.05)">5%</button>
+            <button @click="updatePercentage(0.10)">10%</button>
+            <button @click="updatePercentage(0.15)">15%</button>
+            <button @click="updatePercentage(0.25)">25%</button>
+            <button @click="updatePercentage(0.50)">50%</button>
+            <button class="custom-button">Custom</button>
+          </div>
+          <span>Number of People</span>
+          <input class="person-quantity" type="number" v-model="people" />
+        </div>
+        <aside>
+          <div class="tip-amount">
+            <div>
+              <span>Tip Amount <br /></span>
+              <text class="values"
+                >${{ (people > 0) && (bill > 0) && (percentage) ?
+                tipAmount.toFixed(2) : '_' }}</text
+              >
+            </div>
+            <div>
+              <span>Total <br /></span>
+              <text class="values"
+                >${{ (people > 0) && (bill > 0) && (percentage) ?
+                individualTip.toFixed(2) : '_' }}</text
+              >
+            </div>
+            <button>RESET</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = {
+        data() {
+          return {
+            bill: 0,
+            people: 0,
+            percentage: 0,
+          };
+        },
+        methods: {
+          updatePercentage(value) {
+            this.percentage = parseFloat(value);
+          },
+        },
+        computed: {
+          tipAmount() {
+            return (this.bill * this.percentage) / this.people;
+          },
+          individualTip() {
+            return (this.bill / this.people) * (1.0 + this.percentage);
+          },
+        },
+      };
+      const view = Vue.createApp(app);
+      //components
+      const vm = view.mount("#app");
+    </script>
+  </body>
+</html>
